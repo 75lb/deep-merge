@@ -626,14 +626,14 @@ var lodash_assignwith = assignWith;
  * @module typical
  * @typicalname t
  * @example
- * const t = require('typical')
+ * import * as t from 'typical'
  * const allDefined = array.every(t.isDefined)
  */
 
 /**
  * A plain object is a simple object literal, it is not an instance of a class. Returns true if the input `typeof` is `object` and directly decends from `Object`.
  *
- * @param {*} - the input to test
+ * @param {*} input - The input to test
  * @returns {boolean}
  * @static
  * @example
@@ -662,7 +662,7 @@ function isPlainObject (input) {
 
 /**
  * Returns true if the input value is defined.
- * @param {*} - the input to test
+ * @param {*} input - The input to test
  * @returns {boolean}
  * @static
  */
@@ -689,4 +689,4 @@ function deepMerge (...args) {
   return lodash_assignwith(...args, customiser)
 }
 
-export default deepMerge;
+export { deepMerge as default };

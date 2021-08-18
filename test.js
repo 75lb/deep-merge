@@ -1,7 +1,6 @@
 import TestRunner from 'test-runner'
-import assert from 'assert'
+import { strict as a } from 'assert'
 import deepMerge from '@75lb/deep-merge'
-const a = assert.strict
 
 const tom = new TestRunner.Tom()
 
