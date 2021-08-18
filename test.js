@@ -17,6 +17,21 @@ tom.test('simple', function () {
   })
 })
 
+tom.test('deep object properties', function () {
+  const result = deepMerge(
+    { port: 8000, data: { animal: 'cow' } },
+    { stack: ['one'] },
+    { stack: ['two'], help: true },
+    { data: { animal: 'bat', metal: 'iron' } }
+  )
+  a.deepEqual(result, {
+    port: 8000,
+    stack: ['two'],
+    help: true,
+    data: { animal: 'bat', metal: 'iron' }
+  })
+})
+
 tom.test('arrays: new array does not overwrite if it is empty', function () {
   const stack = ['one']
   const result = deepMerge(
