@@ -5,7 +5,14 @@
   "description": "Deep-merge the values of one object structure into another",
   "repository": "https://github.com/75lb/deep-merge",
   "exports": "./index.js",
-  "keywords": ["merge", "deep merge", "array", "object", "merge", "options"],
+  "keywords": [
+    "merge",
+    "deep merge",
+    "array",
+    "object",
+    "merge",
+    "options"
+  ],
   "license": "MIT",
   "type": "module",
   "engines": {
@@ -14,7 +21,8 @@
   "scripts": {
     "test": "npm run dist && npm run test:ci",
     "test:ci": "test-runner test.js",
-    "dist": "rollup -c"
+    "dist": "rollup -c",
+    "cover": "c8 npm test && c8 report --reporter=text-lcov | coveralls"
   },
   "files": [
     "index.js",
@@ -27,6 +35,8 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^20.0.0",
     "@rollup/plugin-node-resolve": "^13.0.4",
+    "c8": "^7.8.0",
+    "coveralls": "^3.1.1",
     "rollup": "^2.56.2",
     "test-runner": "^0.9.8"
   }
