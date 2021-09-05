@@ -74,6 +74,22 @@ Result:
 { stack: ['two'] }
 ```
 
+### Load anywhere
+
+This library is compatible with Node.js, the Web and any style of module loader. It can be loaded anywhere, natively without transpilation.
+
+Within a Node.js ECMAScript Module:
+
+```js
+import deepMerge from '@75lb/deep-merge'
+```
+
+Within an modern browser ECMAScript Module:
+
+```js
+import deepMerge from './node_modules/@75lb/deep-merge/dist/index.mjs'
+```
+
 * * *
 
 &copy; 2021 [Lloyd Brookes](https://github.com/75lb) \<75pound@gmail.com\>.
