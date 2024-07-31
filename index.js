@@ -1,4 +1,4 @@
-import assignWith from 'lodash.assignwith'
+import assignWith from 'lodash/assignWith.js'
 import { isPlainObject, isDefined } from 'typical'
 
 function customiser (previousValue, newValue, key, object, source) {
