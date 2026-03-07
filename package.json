@@ -1,9 +1,12 @@
 {
   "name": "@75lb/deep-merge",
-  "author": "Lloyd Brookes <75pound@gmail.com>",
+  "author": "Lloyd Brookes <opensource@75lb.com> (http://75lb.com)",
   "version": "1.1.2",
   "description": "Deep-merge the values of one object structure into another",
-  "repository": "https://github.com/75lb/deep-merge",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/75lb/deep-merge.git"
+  },
   "exports": "./index.js",
   "keywords": [
     "merge",
@@ -20,8 +23,8 @@
   },
   "scripts": {
     "test": "npm run dist && npm run test:ci",
-    "test:ci": "test-runner test.js",
-    "dist": "rollup -c"
+    "test:ci": "75lb-nature test-runner test.js",
+    "dist": "75lb-nature simple-rollup index.js"
   },
   "files": [
     "index.js",
@@ -31,11 +34,14 @@
     "lodash": "^4.17.21",
     "typical": "^7.1.1"
   },
-  "devDependencies": {
-    "@rollup/plugin-commonjs": "^26.0.1",
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "rollup": "^4.19.1",
-    "test-runner": "^0.11.0"
+  "devDependencies": {},
+  "peerDependencies": {
+    "@75lb/nature": "latest"
+  },
+  "peerDependenciesMeta": {
+    "@75lb/nature": {
+      "optional": true
+    }
   },
   "standard": {
     "ignore": [

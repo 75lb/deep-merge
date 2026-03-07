@@ -1,10 +1,9 @@
-import TestRunner from 'test-runner'
 import { strict as a } from 'assert'
 import deepMerge from '@75lb/deep-merge'
 
-const tom = new TestRunner.Tom()
+const [test, only, skip] = [new Map(), new Map(), new Map()]
 
-tom.test('simple', function () {
+test.set('simple', function () {
   const result = deepMerge(
     { port: 8000 },
     { stack: ['one'] },
@@ -17,7 +16,7 @@ tom.test('simple', function () {
   })
 })
 
-tom.test('deep object properties', function () {
+test.set('deep object properties', function () {
   const result = deepMerge(
     { port: 8000, data: { animal: 'cow' } },
     { stack: ['one'] },
@@ -32,7 +31,7 @@ tom.test('deep object properties', function () {
   })
 })
 
-tom.test('arrays: new array does not overwrite if it is empty', function () {
+test.set('arrays: new array does not overwrite if it is empty', function () {
   const stack = ['one']
   const result = deepMerge(
     { stack },
@@ -42,7 +41,7 @@ tom.test('arrays: new array does not overwrite if it is empty', function () {
   a.equal(result.stack, stack)
 })
 
-tom.test('arrays 2: later array overwrites if it has items', function () {
+test.set('arrays 2: later array overwrites if it has items', function () {
   const stack = ['one']
   const result = deepMerge(
     { stack: [] },
@@ -52,7 +51,7 @@ tom.test('arrays 2: later array overwrites if it has items', function () {
   a.equal(result.stack, stack)
 })
 
-tom.test('arrays 3: later array overwrites if it has items', function () {
+test.set('arrays 3: later array overwrites if it has items', function () {
   const result = deepMerge(
     { stack: ['two'] },
     { stack: ['one'] }
@@ -62,7 +61,7 @@ tom.test('arrays 3: later array overwrites if it has items', function () {
   })
 })
 
-tom.test('new class instance not created', function () {
+test.set('new class instance not created', function () {
   class One {
     something () {}
   }
@@ -74,4 +73,5 @@ tom.test('new class instance not created', function () {
   a.equal(result.arr, arr)
 })
 
-export default tom
+export { test, only, skip }
+
