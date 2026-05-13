@@ -73,5 +73,19 @@ test.set('new class instance not created', function () {
   a.equal(result.arr, arr)
 })
 
+test.set('does not pollute Object.prototype via __proto__', function () {
+  const payload = JSON.parse('{"__proto__":{"polluted":"yes"}}')
+  deepMerge({}, payload)
+  a.equal({}.polluted, undefined)
+  a.equal(Object.prototype.polluted, undefined)
+})
+
+test.set('does not pollute Object.prototype via nested __proto__', function () {
+  const payload = JSON.parse('{"a":{"__proto__":{"polluted":"yes"}}}')
+  deepMerge({ a: {} }, payload)
+  a.equal({}.polluted, undefined)
+  a.equal(Object.prototype.polluted, undefined)
+})
+
 export { test, only, skip }
 
