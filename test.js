@@ -88,4 +88,3 @@ test.set('does not pollute Object.prototype via nested __proto__', function () {
 })
 
 export { test, only, skip }
-

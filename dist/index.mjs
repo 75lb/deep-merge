@@ -1851,7 +1851,13 @@ function isDefined (input) {
   return typeof input !== 'undefined'
 }
 
+const FORBIDDEN_KEYS = new Set(['__proto__', 'constructor', 'prototype']);
+
 function customiser (previousValue, newValue, key, object, source) {
+  /* refuse to merge into prototype-affecting keys */
+  if (FORBIDDEN_KEYS.has(key)) {
+    return previousValue
+  }
   /* deep merge plain objects */
   if (isPlainObject(previousValue) && isPlainObject(newValue)) {
     return assignWith(previousValue, newValue, customiser)
