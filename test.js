@@ -94,7 +94,7 @@ test.set('does not overwrite Object.prototype methods with data keys', function 
   a.equal(result.valueOf, Object.prototype.valueOf)
   a.equal(typeof result.toString, 'function')
   a.equal(`${result}`, '[object Object]')
-  a.equal(result.hasOwnProperty('toString'), false)
+  a.equal(Object.prototype.hasOwnProperty.call(result, 'toString'), false)
 })
 
 test.set('does not overwrite Object.prototype methods at any depth', function () {
@@ -109,7 +109,7 @@ test.set('blocks the full Object.prototype key set, including future built-ins',
   for (const key of Object.getOwnPropertyNames(Object.prototype)) source[key] = 'EVIL'
   const result = deepMerge({}, source)
   for (const key of Object.getOwnPropertyNames(Object.prototype)) {
-    a.equal(Object.hasOwn(result, key), false, `key ${key} became an own property of the result`)
+    a.equal(Object.prototype.hasOwnProperty.call(result, key), false, `key ${key} became an own property of the result`)
   }
   a.equal(typeof result.toString, 'function')
   a.equal(Object.prototype.polluted, undefined)
@@ -124,7 +124,7 @@ test.set('keeps legitimate data keys', function () {
 test.set('constructor key does not stop the merge, and is not carried over', function () {
   const result = deepMerge({ a: { one: 1 } }, { a: { constructor: 'EVIL', two: 2 } })
   a.deepEqual(result, { a: { one: 1, two: 2 } })
-  a.equal(Object.hasOwn(result.a, 'constructor'), false)
+  a.equal(Object.prototype.hasOwnProperty.call(result.a, 'constructor'), false)
   a.equal(result.a.constructor, Object)
 })
 
