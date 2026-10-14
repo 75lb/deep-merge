@@ -31,8 +31,8 @@
     "dist"
   ],
   "dependencies": {
-    "lodash": "^4.17.21",
-    "typical": "^7.1.1"
+    "lodash": "^4.18.1",
+    "typical": "^7.3.0"
   },
   "devDependencies": {},
   "peerDependencies": {

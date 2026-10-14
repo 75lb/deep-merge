@@ -91,5 +91,3 @@ import deepMerge from './node_modules/@75lb/deep-merge/dist/index.mjs'
 * * *
 
 &copy; 2018-26 [Lloyd Brookes](https://github.com/75lb) \<opensource@75lb.com\>.
-
-Tested by [test-runner](https://github.com/test-runner-js/test-runner). Documented by [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown).
